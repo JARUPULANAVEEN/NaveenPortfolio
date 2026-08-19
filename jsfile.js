@@ -179,6 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Full-Stack AI & Web Application",
       description: "An intelligent agricultural system providing precision farming guidance with soil nutrient analysis and real-time market price forecasting.",
       isInteractiveDemo: true
+    },
+    "portfolio-demo": {
+      title: "Personal Developer Portfolio Website",
+      category: "Full-Stack Web Development",
+      description: "A modern developer portfolio engineered with HTML5, CSS3, JavaScript ES6+, glassmorphic styling, particle canvas animations, and interactive live project simulators.",
+      isPortfolioDemo: true
     }
   };
 
@@ -188,7 +194,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const details = projectDetailsMap[modalKey] || projectDetailsMap["agro-demo"];
 
       if (projectModal && modalBody) {
-        if (details.isInteractiveDemo) {
+        if (details.isPortfolioDemo) {
+          modalBody.innerHTML = `
+            <div style="padding: 0.5rem;">
+              <span class="project-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.8rem;">💻 Full-Stack Web Development</span>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">${details.title}</h3>
+              <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                ${details.description}
+              </p>
+              <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+                <h4 style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 0.6rem;">Key Features & Architecture:</h4>
+                <ul style="color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; padding-left: 1.2rem;">
+                  <li>✨ Glassmorphic UI with dynamic Dark & Light mode theme persistence</li>
+                  <li>✨ Particle Canvas Engine with interactive cursor collision physics</li>
+                  <li>✨ Connected Email Form via FormSubmit API with direct Gmail delivery</li>
+                  <li>✨ Responsive Layouts for Mobile, Tablet, and Desktop screens</li>
+                  <li>✨ Hosted live on GitHub Pages with automated CI/CD deployment</li>
+                </ul>
+              </div>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://github.com/JARUPULANAVEEN/NaveenPortfolio" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub Repository
+                </a>
+                <a href="https://jarupulanaveen.github.io/NaveenPortfolio/" target="_blank" class="btn btn-outline" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Live Website
+                </a>
+              </div>
+            </div>
+          `;
+        } else if (details.isInteractiveDemo) {
           modalBody.innerHTML = `
             <div class="agro-interactive-container">
               <span class="project-badge agro-badge">🌱 Live Interactive Smart Agro System</span>

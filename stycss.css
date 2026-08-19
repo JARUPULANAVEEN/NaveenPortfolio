@@ -1050,6 +1050,90 @@ button {
   margin-top: 0.2rem;
 }
 
+/* Portfolio Card Graphic Mock */
+.badge-tag.tag-web {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.portfolio-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.portfolio-top-brand {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.portfolio-nav-mock {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.58rem;
+  color: #94a3b8;
+}
+
+.portfolio-hero-bg {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 8px;
+  padding: 0.65rem;
+  text-align: center;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-hero-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.portfolio-hero-subtitle {
+  font-size: 0.62rem;
+  color: #94a3b8;
+  margin-top: 0.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.portfolio-mock-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.portfolio-btn-blue {
+  background: #3b82f6;
+  color: #ffffff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+.portfolio-btn-outline {
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
 .preview-header-bar {
   display: flex;
   align-items: center;
