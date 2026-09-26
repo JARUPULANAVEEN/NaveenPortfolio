@@ -203,13 +203,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (details.isIcuDemo) {
           modalBody.innerHTML = `
             <div style="padding: 0.5rem;">
-              <span class="project-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.8rem;">🏥 Healthcare AI & Clinical Decision Support</span>
+              <span class="project-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.8rem;">🏥 Healthcare AI & Clinical Decision Support</span>
               <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">${details.title}</h3>
               <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
                 ${details.description}
               </p>
               <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
-                <h4 style="font-size: 1rem; color: #f87171; margin-bottom: 0.6rem;">Key Features & Clinical Capabilities:</h4>
+                <h4 style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 0.6rem;">Key Features & Clinical Capabilities:</h4>
                 <ul style="color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; padding-left: 1.2rem;">
                   <li>🚨 3-Tiered Smart Alarm Triage (Critical, Urgent, Warning, Advisory)</li>
                   <li>🤖 Explainable AI (XAI) with SHAP Risk Scoring & Feature Impact Analysis</li>
