@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "icu-demo": {
       title: "AMMA ICU SENTINEL — AI Smart Alarm & Clinical CDS",
       category: "Healthcare AI & Clinical Decision Support",
-      description: "An AI-powered Intensive Care Unit (ICU) telemetry monitoring and clinical decision support system built to reduce alarm fatigue using 3-tiered alarm triage, Explainable AI (SHAP analytics), role-based routing, and automated escalation loops.",
+      description: "AMMA ICU SENTINEL is an AI-powered ICU Smart Alarm, Healthcare Analytics & Clinical Decision Support System for real-time patient monitoring, vital-sign analytics, risk prediction, SHAP-based explainable AI, smart alert prioritization, and automated clinical escalation.",
       isIcuDemo: true
     }
   };
