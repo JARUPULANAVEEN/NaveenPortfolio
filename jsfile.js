@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       isPortfolioDemo: true
     },
     "icu-demo": {
-      title: "AMMA ICU SENTINEL — AI Smart Alarm & Clinical CDS",
+      title: "AMMA ICU SENTINEL",
       category: "Healthcare AI & Clinical Decision Support",
       description: "AMMA ICU SENTINEL is an AI-powered ICU Smart Alarm, Healthcare Analytics & Clinical Decision Support System for real-time patient monitoring, vital-sign analytics, risk prediction, SHAP-based explainable AI, smart alert prioritization, and automated clinical escalation.",
       isIcuDemo: true
