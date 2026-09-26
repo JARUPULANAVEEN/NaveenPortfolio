@@ -1070,6 +1070,84 @@ button {
   transform: scale(1.04);
 }
 
+/* AMMA ICU SENTINEL Graphic Mock */
+.badge-tag.tag-icu {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.icu-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.icu-top-brand {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #f87171;
+}
+
+.icu-top-status {
+  font-size: 0.58rem;
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.icu-monitor-bg {
+  background: linear-gradient(135deg, #0f172a, #172554);
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icu-glass-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 0.65rem;
+  text-align: center;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15);
+}
+
+.icu-card-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.icu-mock-telemetry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.icu-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.icu-badge.critical {
+  background: rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.icu-badge.urgent {
+  background: rgba(249, 115, 22, 0.25);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+}
+
 .portfolio-header-bar {
   display: flex;
   justify-content: space-between;

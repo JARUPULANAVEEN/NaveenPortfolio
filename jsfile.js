@@ -185,6 +185,12 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Full-Stack Web Development",
       description: "A modern developer portfolio engineered with HTML5, CSS3, JavaScript ES6+, glassmorphic styling, particle canvas animations, and interactive live project simulators.",
       isPortfolioDemo: true
+    },
+    "icu-demo": {
+      title: "AMMA ICU SENTINEL — AI Smart Alarm & Clinical CDS",
+      category: "Healthcare AI & Clinical Decision Support",
+      description: "An AI-powered Intensive Care Unit (ICU) telemetry monitoring and clinical decision support system built to reduce alarm fatigue using 3-tiered alarm triage, Explainable AI (SHAP analytics), role-based routing, and automated escalation loops.",
+      isIcuDemo: true
     }
   };
 
@@ -194,7 +200,33 @@ document.addEventListener("DOMContentLoaded", () => {
       const details = projectDetailsMap[modalKey] || projectDetailsMap["agro-demo"];
 
       if (projectModal && modalBody) {
-        if (details.isPortfolioDemo) {
+        if (details.isIcuDemo) {
+          modalBody.innerHTML = `
+            <div style="padding: 0.5rem;">
+              <span class="project-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.8rem;">🏥 Healthcare AI & Clinical Decision Support</span>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">${details.title}</h3>
+              <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                ${details.description}
+              </p>
+              <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+                <h4 style="font-size: 1rem; color: #f87171; margin-bottom: 0.6rem;">Key Features & Clinical Capabilities:</h4>
+                <ul style="color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; padding-left: 1.2rem;">
+                  <li>🚨 3-Tiered Smart Alarm Triage (Critical, Urgent, Warning, Advisory)</li>
+                  <li>🤖 Explainable AI (XAI) with SHAP Risk Scoring & Feature Impact Analysis</li>
+                  <li>🔐 Role-Based Dynamic Clinical Routing for Physicians & Assigned ICU Nurses</li>
+                  <li>⏰ Automated Timeout Escalation Loop (2-min Charge Nurse, 5-min Emergency Broadcast)</li>
+                  <li>🌓 High-Contrast Dark & Light UI for Low-Light Night Shift Monitoring</li>
+                </ul>
+              </div>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="https://github.com/JARUPULANAVEEN/icu-smart-alarm" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub Repository
+                </a>
+              </div>
+            </div>
+          `;
+        } else if (details.isPortfolioDemo) {
           modalBody.innerHTML = `
             <div style="padding: 0.5rem;">
               <span class="project-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 0.8rem;">💻 Full-Stack Web Development</span>
