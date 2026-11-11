@@ -456,28 +456,32 @@ document.addEventListener("DOMContentLoaded", () => {
             email: email,
             message: message,
             _subject: `New Portfolio Message from ${name}`,
-            _template: "table"
+            _template: "table",
+            _captcha: "false"
           })
         });
 
         const data = await response.json().catch(() => ({}));
 
         if (data.success === "true" || data.success === true) {
-          showToast("Message sent successfully! Delivered directly to jarupulanaveen2004@gmail.com.", "success", 5000);
+          showToast("Message sent successfully! Delivered directly to jarupulanaveen2004@gmail.com.", "success", 6000);
           contactForm.reset();
         } else if (data.message && data.message.toLowerCase().includes("activation")) {
           // FormSubmit requires a 1-time email confirmation from the owner
           showToast("Action required: Check jarupulanaveen2004@gmail.com inbox (or Spam) and click 'Activate Form' once!", "info", 7000);
           contactForm.reset();
         } else {
-          // Direct fallback to mailto if FormSubmit fails
-          window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent("Portfolio Message from " + name)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
-          showToast("Opening email app to deliver message to jarupulanaveen2004@gmail.com...", "info", 5000);
+          // Fallback to native HTML form submission to ensure delivery
+          HTMLFormElement.prototype.submit.call(contactForm);
         }
       } catch (err) {
-        // Fallback to mailto
-        window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent("Portfolio Message from " + name)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
-        showToast("Opening email app to send message...", "info", 5000);
+        // Fallback: If fetch is blocked by browser adblocker or network error, submit natively via form POST
+        try {
+          HTMLFormElement.prototype.submit.call(contactForm);
+        } catch (submitErr) {
+          window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent("Portfolio Message from " + name)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+          showToast("Opening email app to send message...", "info", 5000);
+        }
       } finally {
         if (submitContactBtn) {
           submitContactBtn.disabled = false;
