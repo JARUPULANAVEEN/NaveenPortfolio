@@ -425,12 +425,18 @@ document.addEventListener("DOMContentLoaded", () => {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
+      const nameEl = document.getElementById("name");
+      const emailEl = document.getElementById("email");
+      const messageEl = document.getElementById("message");
 
-      if (!name || !email || !message) return;
+      const name = nameEl ? nameEl.value.trim() : "";
+      const email = emailEl ? emailEl.value.trim() : "";
+      const message = messageEl ? messageEl.value.trim() : "";
+
+      if (!name || !email || !message) {
+        showToast("Please fill in all required fields (Name, Email, Message).", "error");
+        return;
+      }
 
       if (submitContactBtn) {
         submitContactBtn.disabled = true;
@@ -448,31 +454,35 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({
             name: name,
             email: email,
-            subject: subject || "New Contact Inquiry",
             message: message,
-            _subject: `Portfolio Contact from ${name}: ${subject || 'General Inquiry'}`
+            _subject: `New Portfolio Message from ${name}`,
+            _template: "table"
           })
         });
 
         const data = await response.json().catch(() => ({}));
 
-        if (response.ok || data.success === "true") {
-          showToast(`Message sent! Please check jarupulanaveen2004@gmail.com inbox (and Spam) to activate FormSubmit if first time.`, "success");
+        if (data.success === "true" || data.success === true) {
+          showToast("Message sent successfully! Delivered directly to jarupulanaveen2004@gmail.com.", "success", 5000);
+          contactForm.reset();
+        } else if (data.message && data.message.toLowerCase().includes("activation")) {
+          // FormSubmit requires a 1-time email confirmation from the owner
+          showToast("Action required: Check jarupulanaveen2004@gmail.com inbox (or Spam) and click 'Activate Form' once!", "info", 7000);
           contactForm.reset();
         } else {
-          // Fallback to mailto
-          window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent("Name: " + name + "\nSender Email: " + email + "\n\nMessage:\n" + message)}`;
-          showToast("Opening email application to complete delivery to jarupulanaveen2004@gmail.com", "info");
+          // Direct fallback to mailto if FormSubmit fails
+          window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent("Portfolio Message from " + name)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+          showToast("Opening email app to deliver message to jarupulanaveen2004@gmail.com...", "info", 5000);
         }
       } catch (err) {
         // Fallback to mailto
-        window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Inquiry')}&body=${encodeURIComponent("Name: " + name + "\nSender Email: " + email + "\n\nMessage:\n" + message)}`;
-        showToast("Opening email application to send message...", "info");
+        window.location.href = `mailto:jarupulanaveen2004@gmail.com?subject=${encodeURIComponent("Portfolio Message from " + name)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+        showToast("Opening email app to send message...", "info", 5000);
       } finally {
         if (submitContactBtn) {
           submitContactBtn.disabled = false;
           submitContactBtn.innerHTML = `<span>Send Message</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
         }
       }
     });
@@ -491,14 +501,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 8. Toast Notification System ---
-  function showToast(message, type = "success") {
+  function showToast(message, type = "success", duration = 4000) {
     const toastContainer = document.getElementById("toastContainer");
     if (!toastContainer) return;
 
     const toast = document.createElement("div");
     toast.className = `toast toast-${type}`;
+    const strokeColor = type === 'success' ? '#10b981' : (type === 'error' ? '#ef4444' : '#38bdf8');
     toast.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${type === 'success' ? '#10b981' : '#38bdf8'}" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${strokeColor}" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <span>${message}</span>
     `;
 
@@ -509,7 +520,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.style.transform = "translateX(100%)";
       toast.style.transition = "all 0.3s ease";
       setTimeout(() => toast.remove(), 300);
-    }, 3500);
+    }, duration);
   }
 
   // --- 9. Scroll Observer & Back To Top ---
